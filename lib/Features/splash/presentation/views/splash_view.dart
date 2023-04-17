@@ -1,6 +1,6 @@
-import 'package:boklo_ebook/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/utils/dimensions.dart';
 import '../../../../core/utils/images.dart';
 import '../widgets/sliding_text.dart';
 
@@ -15,7 +15,7 @@ class SplashView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(AppImages.imagesLogo),
-          SizedBox(height: AppDimensions.height10),
+          SizedBox(height: AppDimensions.heightCalculator(10)),
           const SlidingText(),
         ],
       ),

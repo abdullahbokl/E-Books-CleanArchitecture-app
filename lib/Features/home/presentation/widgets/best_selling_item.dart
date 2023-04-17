@@ -11,7 +11,7 @@ class BestSellingListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppDimensions.height120,
+      height: AppDimensions.heightCalculator(120),
       child: Row(
         children: [
           AspectRatio(
@@ -19,7 +19,8 @@ class BestSellingListViewItem extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(AppDimensions.radius20),
+                borderRadius:
+                    BorderRadius.circular(AppDimensions.heightCalculator(20)),
                 image: const DecorationImage(
                   image: AssetImage(AppImages.imagesTestImageJpg),
                   fit: BoxFit.fill,
@@ -27,7 +28,7 @@ class BestSellingListViewItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: AppDimensions.width30),
+          SizedBox(width: AppDimensions.widthCalculator(30)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,14 +39,25 @@ class BestSellingListViewItem extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: AppDimensions.height5),
+                SizedBox(height: AppDimensions.heightCalculator(5)),
                 Text(
                   'Book author',
                   style: AppStyles.textStyle14,
                 ),
                 const Spacer(),
-                const BookRate(),
-                SizedBox(height: AppDimensions.height5),
+                Row(
+                  children: [
+                    Text(
+                      '\$200',
+                      style: AppStyles.textStyle16.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    const BookRate(),
+                  ],
+                ),
+                SizedBox(height: AppDimensions.heightCalculator(5)),
               ],
             ),
           ),

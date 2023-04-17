@@ -14,20 +14,20 @@ class HomeView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppDimensions.width25),
+          padding: EdgeInsets.symmetric(horizontal: AppDimensions.widthCalculator(20)),
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: AppDimensions.height20),
+                    SizedBox(height: AppDimensions.heightCalculator(20)),
                     const HomeCustomAppBar(),
-                    SizedBox(height: AppDimensions.height30),
+                    SizedBox(height: AppDimensions.heightCalculator(30)),
                     const HomeBooksListView(),
-                    SizedBox(height: AppDimensions.height50),
+                    SizedBox(height: AppDimensions.heightCalculator(50)),
                     Text('Best Selling', style: AppStyles.textStyle18),
-                    SizedBox(height: AppDimensions.height20),
+                    SizedBox(height: AppDimensions.heightCalculator(20)),
                   ],
                 ),
               ),

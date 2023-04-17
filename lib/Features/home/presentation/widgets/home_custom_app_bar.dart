@@ -16,14 +16,14 @@ class HomeCustomAppBar extends StatelessWidget {
       children: [
         Image.asset(
           AppImages.imagesLogo,
-          height: AppDimensions.height20,
+          height: AppDimensions.heightCalculator(20),
         ),
         IconButton(
           onPressed: () {},
           icon: FaIcon(
             FontAwesomeIcons.magnifyingGlass,
             color: Colors.white,
-            size: AppDimensions.iconSize18,
+            size: AppDimensions.heightCalculator(18),
           ),
         ),
       ],

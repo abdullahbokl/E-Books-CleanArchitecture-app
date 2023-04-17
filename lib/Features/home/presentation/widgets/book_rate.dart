@@ -13,22 +13,16 @@ class BookRate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          '\$200',
-          style: AppStyles.textStyle16.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Spacer(),
         FaIcon(
           FontAwesomeIcons.solidStar,
           color: AppColors.rateStarColor,
-          size: AppDimensions.iconSize15,
+          size: AppDimensions.heightCalculator(15),
         ),
-        SizedBox(width: AppDimensions.width5),
+        SizedBox(width: AppDimensions.widthCalculator(5)),
         Text('4.8', style: AppStyles.textStyle16),
-        SizedBox(width: AppDimensions.width3),
+        SizedBox(width: AppDimensions.widthCalculator(3)),
         Text(
           '(245)',
           style: AppStyles.textStyle14.copyWith(
