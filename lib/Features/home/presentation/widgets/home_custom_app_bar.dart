@@ -1,5 +1,7 @@
+import 'package:boklo_ebook/core/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 import '/core/utils/dimensions.dart';
 import '/core/utils/images.dart';
@@ -19,7 +21,9 @@ class HomeCustomAppBar extends StatelessWidget {
           height: AppDimensions.heightCalculator(20),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(AppRouter.search);
+          },
           icon: FaIcon(
             FontAwesomeIcons.magnifyingGlass,
             color: Colors.white,

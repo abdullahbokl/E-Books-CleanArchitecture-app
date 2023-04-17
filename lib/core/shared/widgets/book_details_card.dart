@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/dimensions.dart';
-import '../../../../core/utils/images.dart';
-import '../../../../core/utils/styles.dart';
-import 'book_rate.dart';
+import '../../utils/dimensions.dart';
+import '../../utils/images.dart';
+import '../../utils/styles.dart';
+import '../../../Features/home/presentation/widgets/book_rate.dart';
 
-class BestSellingListViewItem extends StatelessWidget {
-  const BestSellingListViewItem({super.key});
+class BookDetailsCard extends StatelessWidget {
+  const BookDetailsCard({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -37,7 +37,7 @@ class _SlidingTextState extends State<SlidingText>
 
   _navigateToHome(BuildContext context) {
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      GoRouter.of(context).push(AppRouter.home);
+      GoRouter.of(context).go(AppRouter.home);
     });
   }
 

@@ -23,10 +23,13 @@ class BookRate extends StatelessWidget {
         SizedBox(width: AppDimensions.widthCalculator(5)),
         Text('4.8', style: AppStyles.textStyle16),
         SizedBox(width: AppDimensions.widthCalculator(3)),
-        Text(
-          '(245)',
-          style: AppStyles.textStyle14.copyWith(
-            fontWeight: FontWeight.bold,
+        Opacity(
+          opacity: 0.7,
+          child: Text(
+            '(245)',
+            style: AppStyles.textStyle14.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],

@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/utils/router.dart';
-import 'best_selling_item.dart';
+import '../../../../core/shared/widgets/book_details_card.dart';
 
 class BestSellingListView extends StatelessWidget {
   const BestSellingListView({super.key});
@@ -18,7 +18,7 @@ class BestSellingListView extends StatelessWidget {
           padding: EdgeInsets.only(bottom: AppDimensions.heightCalculator(20)),
           child: GestureDetector(
             onTap: () => GoRouter.of(context).push(AppRouter.bookDetails),
-            child: const BestSellingListViewItem(),
+            child: const BookDetailsCard(),
           ),
         );
       },
