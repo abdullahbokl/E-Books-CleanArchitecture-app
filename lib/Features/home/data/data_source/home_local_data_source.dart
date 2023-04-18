@@ -1,3 +1,6 @@
+import 'package:hive/hive.dart';
+
+import '../../../../core/utils/strings.dart';
 import '../../domain/entities/book_entity.dart';
 
 abstract class HomeLocalDataSource {
@@ -9,13 +12,13 @@ abstract class HomeLocalDataSource {
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
   List<BookEntity> fetchAllBooks() {
-    // TODO: implement fetchAllBooks
-    throw UnimplementedError();
+    var box = Hive.box<BookEntity>(AppStrings.allBooksBox);
+    return box.values.toList();
   }
 
   @override
   List<BookEntity> fetchBestSellingBooks() {
-    // TODO: implement fetchBestSellingBooks
-    throw UnimplementedError();
+    var box = Hive.box<BookEntity>(AppStrings.bestSellerBox);
+    return box.values.toList();
   }
 }
