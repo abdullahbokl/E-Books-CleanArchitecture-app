@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/utils/errors.dart';
+import '../../../../core/utils/errors/failure.dart';
 import '../entities/book_entity.dart';
 import '../repositories/home_repo.dart';
 
-class FetchBestSellingBooks implements UseCase<List<BookEntity>, void> {
+class FetchBestSellingBooksUseCase implements UseCase<List<BookEntity>, void> {
   HomeRepo homeRepo;
 
-  FetchBestSellingBooks(this.homeRepo);
+  FetchBestSellingBooksUseCase(this.homeRepo);
 
   @override
-  Future<Either<AppErrors, List<BookEntity>>> call(_) async {
+  Future<Either<Failure, List<BookEntity>>> call() async {
     return await homeRepo.fetchBestSellingBooks();
   }
 }
