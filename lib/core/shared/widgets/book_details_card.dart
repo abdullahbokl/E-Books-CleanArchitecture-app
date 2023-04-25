@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../../Features/home/domain/entities/book_entity.dart';
 import '../../utils/dimensions.dart';
-import '../../utils/images.dart';
 import '../../utils/styles.dart';
 import '../../../Features/home/presentation/widgets/book_rate.dart';
+import 'custom_book_image.dart';
 
 class BookDetailsCard extends StatelessWidget {
-  const BookDetailsCard({super.key});
+  const BookDetailsCard({super.key, required this.book});
+
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -15,46 +18,38 @@ class BookDetailsCard extends StatelessWidget {
       child: Row(
         children: [
           AspectRatio(
-            aspectRatio: 1.5 / 2,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius:
-                    BorderRadius.circular(AppDimensions.heightCalculator(20)),
-                image: const DecorationImage(
-                  image: AssetImage(AppImages.imagesTestImageJpg),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
+              aspectRatio: 1.5 / 2,
+              child: CustomBookImage(imageUrl: book.image ?? '')),
           SizedBox(width: AppDimensions.widthCalculator(30)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Book number1 name1 sdafsafsdfsfsda',
+                  book.title,
                   style: AppStyles.textStyle20,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: AppDimensions.heightCalculator(5)),
                 Text(
-                  'Book author',
+                  book.authorName ?? '',
                   style: AppStyles.textStyle14,
                 ),
                 const Spacer(),
                 Row(
                   children: [
                     Text(
-                      '\$200',
+                      _priceText(),
                       style: AppStyles.textStyle16.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const Spacer(),
-                    const BookRate(),
+                    BookRate(
+                      rate: book.rating,
+                      rateCount: book.ratingCount,
+                    ),
                   ],
                 ),
                 SizedBox(height: AppDimensions.heightCalculator(5)),
@@ -64,5 +59,10 @@ class BookDetailsCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _priceText() {
+    var price = book.price;
+    return price != null && price != 0 ? "$price EGP" : "Free";
   }
 }

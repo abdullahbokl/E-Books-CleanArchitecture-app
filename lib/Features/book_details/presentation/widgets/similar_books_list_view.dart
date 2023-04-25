@@ -33,7 +33,7 @@ class SimilarBooksListView extends StatelessWidget {
                     EdgeInsets.only(right: AppDimensions.widthCalculator(5)),
                 child: GestureDetector(
                   onTap: () => GoRouter.of(context).push(AppRouter.bookDetails),
-                  child: const CustomBookImage(),
+                  child: CustomBookImage(imageUrl: ''),
                 ),
               );
             },

@@ -8,7 +8,12 @@ import '../../../../core/utils/styles.dart';
 class BookRate extends StatelessWidget {
   const BookRate({
     super.key,
+    this.rate,
+    this.rateCount,
   });
+
+  final num? rate;
+  final num? rateCount;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +26,12 @@ class BookRate extends StatelessWidget {
           size: AppDimensions.heightCalculator(15),
         ),
         SizedBox(width: AppDimensions.widthCalculator(5)),
-        Text('4.8', style: AppStyles.textStyle16),
+        Text('${rate ?? 0.0}', style: AppStyles.textStyle16),
         SizedBox(width: AppDimensions.widthCalculator(3)),
         Opacity(
           opacity: 0.7,
           child: Text(
-            '(245)',
+            '(${rateCount ?? 0})',
             style: AppStyles.textStyle14.copyWith(
               fontWeight: FontWeight.bold,
             ),

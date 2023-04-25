@@ -1,14 +1,9 @@
+import '../../../../core/shared/models/book_model/BookModel.dart';
 import '../../../../core/utils/api_services.dart';
-import '../../../../core/utils/functions/save_books_locally.dart';
+import '../../../../core/shared/functions/save_books_locally.dart';
 import '../../../../core/utils/strings.dart';
 import '../../domain/entities/book_entity.dart';
-import '../models/book_model/book_model.dart';
-
-abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchAllBooks();
-
-  Future<List<BookEntity>> fetchBestSellingBooks();
-}
+import 'data_sources.dart';
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   ApiServices apiServices;

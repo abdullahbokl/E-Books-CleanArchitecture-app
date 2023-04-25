@@ -1,3 +1,4 @@
+import 'package:boklo_ebook/Features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared/widgets/book_details_card.dart';
@@ -33,7 +34,16 @@ class SearchView extends StatelessWidget {
                     return Padding(
                       padding: EdgeInsets.only(
                           bottom: AppDimensions.heightCalculator(20)),
-                      child: const BookDetailsCard(),
+                      child: BookDetailsCard(
+                        book: BookEntity(
+                          bookId: '1',
+                          title: 'title',
+                          image: '',
+                          authorName: '',
+                          price: null,
+                          rating: null,
+                        ),
+                      ),
                     );
                   },
                 ),

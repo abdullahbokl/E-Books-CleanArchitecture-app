@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/dimensions.dart';
-import '../../utils/images.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({super.key});
+  const CustomBookImage({super.key, required this.imageUrl});
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,8 @@ class CustomBookImage extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(AppDimensions.heightCalculator(20)),
-          image: const DecorationImage(
-            image: AssetImage(AppImages.imagesTestImageJpg),
+          image: DecorationImage(
+            image: NetworkImage(imageUrl),
             fit: BoxFit.fill,
           ),
         ),
