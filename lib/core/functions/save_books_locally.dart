@@ -5,8 +5,9 @@ import '../shared/entities/book_entity/book_entity.dart';
 saveBooksLocally({
   required List<BookEntity> booksList,
   required String boxName,
+  required String key,
 }) async {
   var box = Hive.box(boxName);
 
-  box.put(boxName, booksList);
+  await box.put(key, booksList);
 }

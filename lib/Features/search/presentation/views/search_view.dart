@@ -1,50 +1,49 @@
-import 'package:boklo_ebook/core/shared/entities/book_entity/book_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/shared/widgets/book_details_card.dart';
+import '../../../../core/shared/widgets/custom_circular_indicator.dart';
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/utils/styles.dart';
+import '../manager/search_cubit/search_cubit.dart';
 import '../widgets/custom_search_text_field.dart';
+import '../widgets/search_result_list_view.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: AppDimensions.widthCalculator(30)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: AppDimensions.heightCalculator(15)),
-              const CustomSearchTextField(),
-              SizedBox(height: AppDimensions.heightCalculator(15)),
-              Text(
-                'Search Result',
-                style: AppStyles.textStyle18,
+              horizontal: AppDimensions.widthCalculator(15)),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    SizedBox(height: AppDimensions.heightCalculator(20)),
+                    const CustomSearchTextField(),
+                    SizedBox(height: AppDimensions.heightCalculator(15)),
+                    Text(
+                      'Search Result',
+                      style: AppStyles.textStyle18,
+                    ),
+                    SizedBox(height: AppDimensions.heightCalculator(15)),
+                  ],
+                ),
               ),
-              SizedBox(height: AppDimensions.heightCalculator(15)),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                          bottom: AppDimensions.heightCalculator(20)),
-                      child: BookDetailsCard(
-                        book: BookEntity(
-                          bookId: '1',
-                          title: 'title',
-                          image: '',
-                          authorName: '',
-                          price: null,
-                          rating: null,
-                        ),
-                      ),
-                    );
+              SliverFillRemaining(
+                child: BlocBuilder<SearchCubit, SearchState>(
+                  builder: (context, state) {
+                    if (state is SearchFailure) {
+                      return ErrorWidget(state.errMessage);
+                    } else if (state is SearchSuccess) {
+                      return SearchResultListView(books: state.books);
+                    } else {
+                      return const CustomCircularIndicator();
+                    }
                   },
                 ),
               ),

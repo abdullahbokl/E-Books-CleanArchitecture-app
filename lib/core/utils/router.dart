@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../Features/book_details/domain/use_cases/fetch_similar_books_use_case.dart';
 import '../../Features/book_details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import '../../Features/book_details/presentation/views/book_details_view.dart';
+import '../../Features/search/domain/use_cases/fetch_books_by_query_use_case.dart';
+import '../../Features/search/presentation/manager/search_cubit/search_cubit.dart';
 import '../shared/entities/book_entity/book_entity.dart';
 import '../../Features/home/presentation/views/home_view.dart';
 import '../../Features/search/presentation/views/search_view.dart';
@@ -39,7 +41,12 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRouter.search,
-        builder: (context, state) => const SearchView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SearchCubit(
+            getIt<FetchBooksByQueryUseCase>(),
+          ),
+          child: const SearchView(),
+        ),
       ),
     ],
   );

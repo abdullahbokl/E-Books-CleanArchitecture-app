@@ -1,6 +1,6 @@
 import '../../../../core/functions/convert_data_into_books_list.dart';
 import '../../../../core/shared/entities/book_entity/book_entity.dart';
-import '../../../../core/utils/api_services.dart';
+import '../../../../core/services/api_services.dart';
 
 abstract class DetailsRemoteDataSources {
   Future<List<BookEntity>> fetchSimilarBooks(String category);

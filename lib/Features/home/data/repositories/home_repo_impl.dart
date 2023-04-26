@@ -41,7 +41,7 @@ class HomeRepoImpl implements HomeRepo {
       // if (books.isNotEmpty) {
       //   return Right(books);
       // }
-      books = await homeRemoteDataSource.fetchBestSellingBooks();
+      books = await homeRemoteDataSource.fetchNewestBooks();
       return Right(books);
     } catch (e) {
       if (e is DioError) {
