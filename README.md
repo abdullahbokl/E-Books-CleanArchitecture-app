@@ -1,6 +1,6 @@
 E-Books App :
 
-  MVVM, SOLID Principles, Clean Code, API, BLoC, GoRouter, Responsive UI
+  Clean Architecture, SOLID Principles, Clean Code, API, BLoC, Hive, GoRouter, Responsive UI
 
 
 Video:-
