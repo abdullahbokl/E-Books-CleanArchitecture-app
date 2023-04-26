@@ -1,16 +1,25 @@
-# boklo_ebook
+E-Books App :
 
-A new Flutter project.
+  MVVM, SOLID Principles, Clean Code, API, BLoC, GoRouter, Responsive UI
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Video:-
 
-A few resources to get you started if this is your first Flutter project:
+https://drive.google.com/file/d/1m-cQXI-rj2OzjPKiyH8pklHYpwpYU_vC/view
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Screenshots:-
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Splash Screen <br/>
+![image](https://user-images.githubusercontent.com/113001767/234313257-a6a630ad-d62c-450d-8f4a-52a0dc6afb24.png)
+
+Home Screen <br/>
+![image](https://user-images.githubusercontent.com/113001767/234313434-fb573760-6c07-4600-a645-ffd2a3b122b4.png)
+
+Details Screen <br/>
+![image](https://user-images.githubusercontent.com/113001767/234314401-022b1c6c-2dad-47be-99a9-fe3c32d5b9a8.png)
+
+Book Preview <br/>
+![image](https://user-images.githubusercontent.com/113001767/234314763-a7214c34-8075-4a53-9eec-7b844131b141.png)
+
+Search Screen <br/>
+![image](https://user-images.githubusercontent.com/113001767/234314979-640d1aeb-dfc5-4fa2-8900-35c11284fb60.png)
