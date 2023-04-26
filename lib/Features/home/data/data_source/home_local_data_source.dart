@@ -12,13 +12,26 @@ abstract class HomeLocalDataSource {
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
   List<BookEntity> fetchAllBooks() {
-    var box = Hive.box<BookEntity>(AppStrings.allBooksBox);
-    return box.values.toList();
+    var box = Hive.box(AppStrings.allBooksBox);
+    var value = box.get(AppStrings.allBooksKey) as List<dynamic>;
+    List<BookEntity> books = _convertListOfDynamicToListOfBookEntity(value);
+    return books;
   }
 
   @override
   List<BookEntity> fetchBestSellingBooks() {
-    var box = Hive.box<BookEntity>(AppStrings.bestSellerBox);
-    return box.values.toList();
+    var box = Hive.box(AppStrings.newestBooksBox);
+    var value = box.get(AppStrings.newestBooksKey) as List<dynamic>;
+    List<BookEntity> books = _convertListOfDynamicToListOfBookEntity(value);
+
+    return books;
+  }
+
+  _convertListOfDynamicToListOfBookEntity(List<dynamic> value) {
+    List<BookEntity> books = [];
+    for (BookEntity item in value) {
+      books.add(item);
+    }
+    return books;
   }
 }

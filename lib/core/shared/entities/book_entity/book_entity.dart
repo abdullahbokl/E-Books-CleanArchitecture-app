@@ -2,6 +2,8 @@ import 'package:hive/hive.dart';
 
 part 'book_entity.g.dart';
 
+// flutter packages pub run build_runner build
+
 @HiveType(typeId: 0)
 class BookEntity {
   @HiveField(0)

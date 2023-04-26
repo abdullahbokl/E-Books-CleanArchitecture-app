@@ -18,10 +18,10 @@ class HomeRepoImpl implements HomeRepo {
     try {
       List<BookEntity> books = [];
       /// todo : uncomment this after implementing local data source
-      // books = homeLocalDataSource.fetchAllBooks();
-      // if (books.isNotEmpty) {
-      //   return Right(books);
-      // }
+      books = homeLocalDataSource.fetchAllBooks();
+      if (books.isNotEmpty) {
+        return Right(books);
+      }
       books = await homeRemoteDataSource.fetchAllBooks();
       return Right(books);
     } catch (error) {
@@ -37,10 +37,10 @@ class HomeRepoImpl implements HomeRepo {
     try {
       List<BookEntity> books = [];
       /// todo : uncomment this after implementing local data source
-      // books = homeLocalDataSource.fetchBestSellingBooks();
-      // if (books.isNotEmpty) {
-      //   return Right(books);
-      // }
+      books = homeLocalDataSource.fetchBestSellingBooks();
+      if (books.isNotEmpty) {
+        return Right(books);
+      }
       books = await homeRemoteDataSource.fetchNewestBooks();
       return Right(books);
     } catch (e) {

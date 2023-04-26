@@ -22,7 +22,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
 
     List<BookEntity> books = convertDataIntoBooksList(data);
 
-    saveBooksLocally(booksList: books, boxName: AppStrings.allBooksBox, key: AppStrings.allBooksKey);
+    await saveBooksLocally(booksList: books, boxName: AppStrings.allBooksBox, key: AppStrings.allBooksKey);
 
     return books;
   }
@@ -34,7 +34,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
 
     List<BookEntity> books = convertDataIntoBooksList(data);
 
-    saveBooksLocally(booksList: books, boxName: AppStrings.bestSellerBox, key: AppStrings.newestBooksKey);
+    await saveBooksLocally(booksList: books, boxName: AppStrings.newestBooksBox, key: AppStrings.newestBooksKey);
 
     return books;
   }

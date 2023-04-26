@@ -10,8 +10,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox<BookEntity>(AppStrings.allBooksBox);
-  await Hive.openBox<BookEntity>(AppStrings.bestSellerBox);
+  await Hive.openBox(AppStrings.allBooksBox);
+  await Hive.openBox(AppStrings.newestBooksBox);
   setupServiceLocator();
   runApp(const BokloEBook());
 }
