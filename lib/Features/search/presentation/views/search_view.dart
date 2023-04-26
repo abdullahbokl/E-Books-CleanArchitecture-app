@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared/widgets/custom_circular_indicator.dart';
+import '../../../../core/shared/widgets/custom_error_widget.dart';
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/utils/styles.dart';
 import '../manager/search_cubit/search_cubit.dart';
@@ -38,7 +39,7 @@ class SearchView extends StatelessWidget {
                 child: BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {
                     if (state is SearchFailure) {
-                      return ErrorWidget(state.errMessage);
+                      return CustomErrorWidget(errorMessage: state.errMessage);
                     } else if (state is SearchSuccess) {
                       return SearchResultListView(books: state.books);
                     } else {

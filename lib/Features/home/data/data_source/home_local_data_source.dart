@@ -13,6 +13,9 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
   List<BookEntity> fetchAllBooks() {
     var box = Hive.box(AppStrings.allBooksBox);
+    if (box.isEmpty) {
+      return [];
+    }
     var value = box.get(AppStrings.allBooksKey) as List<dynamic>;
     List<BookEntity> books = _convertListOfDynamicToListOfBookEntity(value);
     return books;
@@ -21,6 +24,9 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
   List<BookEntity> fetchBestSellingBooks() {
     var box = Hive.box(AppStrings.newestBooksBox);
+    if (box.isEmpty) {
+      return [];
+    }
     var value = box.get(AppStrings.newestBooksKey) as List<dynamic>;
     List<BookEntity> books = _convertListOfDynamicToListOfBookEntity(value);
 

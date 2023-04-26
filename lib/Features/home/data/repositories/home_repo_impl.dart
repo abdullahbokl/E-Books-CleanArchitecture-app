@@ -17,7 +17,6 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<ServerFailure, List<BookEntity>>> fetchAllBooks() async {
     try {
       List<BookEntity> books = [];
-      /// todo : uncomment this after implementing local data source
       books = homeLocalDataSource.fetchAllBooks();
       if (books.isNotEmpty) {
         return Right(books);
@@ -35,10 +34,9 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<ServerFailure, List<BookEntity>>> fetchNewestBooks() async {
     try {
-      List<BookEntity> books = [];
-      /// todo : uncomment this after implementing local data source
+      List<BookEntity>? books;
       books = homeLocalDataSource.fetchBestSellingBooks();
-      if (books.isNotEmpty) {
+      if (books != null && books.isNotEmpty) {
         return Right(books);
       }
       books = await homeRemoteDataSource.fetchNewestBooks();

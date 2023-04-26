@@ -24,6 +24,7 @@ class BookDetailsSection extends StatelessWidget {
         SizedBox(height: AppDimensions.heightCalculator(45)),
         Text(
           book.title,
+          maxLines: 2,
           textAlign: TextAlign.center,
           style: AppStyles.textStyle20.copyWith(
             fontWeight: FontWeight.bold,
@@ -34,6 +35,7 @@ class BookDetailsSection extends StatelessWidget {
           opacity: .7,
           child: Text(
             book.authorName ?? '',
+            maxLines: 1,
             style: AppStyles.textStyle18.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w500,

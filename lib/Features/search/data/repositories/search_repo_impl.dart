@@ -16,6 +16,9 @@ class SearchRepoImpl implements SearchRepo {
     try {
       List<BookEntity> books = [];
       books = await searchRemoteDataSource.fetchBooksByQuery(query);
+      if (books.isEmpty) {
+        return left(ServerFailure('No books found'));
+      }
       return Right(books);
     } catch (error) {
       if (error is DioError) {

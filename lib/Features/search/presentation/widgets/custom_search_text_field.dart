@@ -12,6 +12,7 @@ class CustomSearchTextField extends StatelessWidget {
     SearchCubit searchCubit = SearchCubit.get(context);
     return TextField(
       controller: searchCubit.searchFieldController,
+      onSubmitted: (value) => searchCubit.fetchBooksBySearchQuery(),
       decoration: InputDecoration(
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
