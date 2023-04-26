@@ -1,5 +1,5 @@
-import 'Epub.dart';
-import 'Pdf.dart';
+import 'epub.dart';
+import 'pdf.dart';
 import 'dart:convert';
 
 /// country : "US"

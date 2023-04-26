@@ -1,6 +1,6 @@
-import 'IndustryIdentifiers.dart';
-import 'Dimensions.dart';
-import 'ImageLinks.dart';
+import 'industry_identifiers.dart';
+import 'book_model_dimensions.dart';
+import 'image_links.dart';
 import 'dart:convert';
 
 /// title : "The Google story"

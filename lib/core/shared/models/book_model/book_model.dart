@@ -1,7 +1,7 @@
 import '../../entities/book_entity/book_entity.dart';
-import 'VolumeInfo.dart';
-import 'SaleInfo.dart';
-import 'AccessInfo.dart';
+import 'volume_info.dart';
+import 'sale_info.dart';
+import 'access_info.dart';
 import 'dart:convert';
 
 import 'search_info.dart';

@@ -1,5 +1,5 @@
 import '../shared/entities/book_entity/book_entity.dart';
-import '../shared/models/book_model/BookModel.dart';
+import '../shared/models/book_model/book_model.dart';
 
 List<BookEntity> convertDataIntoBooksList(data) {
   List<BookEntity> books = [];

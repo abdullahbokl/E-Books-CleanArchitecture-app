@@ -1,5 +1,5 @@
-import 'ListPrice.dart';
-import 'RetailPrice.dart';
+import 'list_price.dart';
+import 'retail_price.dart';
 import 'dart:convert';
 
 /// country : "US"
