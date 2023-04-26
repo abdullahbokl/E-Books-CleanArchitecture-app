@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 import '../../../../core/utils/strings.dart';
-import '../../domain/entities/book_entity.dart';
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
 
 abstract class HomeLocalDataSource {
   List<BookEntity> fetchAllBooks();

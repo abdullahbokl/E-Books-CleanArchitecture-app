@@ -6,7 +6,7 @@ import '../../../../core/shared/widgets/custom_circular_indicator.dart';
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/shared/widgets/custom_book_image.dart';
 import '../../../../core/utils/router.dart';
-import '../../domain/entities/book_entity.dart';
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../manger/all_books_cubit/all_books_cubit.dart';
 
 class HomeBooksListView extends StatelessWidget {

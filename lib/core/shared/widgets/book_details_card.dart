@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../Features/home/domain/entities/book_entity.dart';
+import '../entities/book_entity/book_entity.dart';
 import '../../utils/dimensions.dart';
 import '../../utils/styles.dart';
 import '../../../Features/home/presentation/widgets/book_rate.dart';

@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-import '../../../Features/home/domain/entities/book_entity.dart';
+import '../shared/entities/book_entity/book_entity.dart';
 
 saveBooksLocally({
   required List<BookEntity> booksList,

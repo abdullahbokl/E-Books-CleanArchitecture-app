@@ -1,4 +1,4 @@
-import 'package:boklo_ebook/Features/home/domain/entities/book_entity.dart';
+import 'package:boklo_ebook/core/shared/entities/book_entity/book_entity.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared/widgets/book_details_card.dart';

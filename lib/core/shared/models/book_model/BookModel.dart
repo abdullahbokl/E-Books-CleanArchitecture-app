@@ -1,4 +1,4 @@
-import '../../../../Features/home/domain/entities/book_entity.dart';
+import '../../entities/book_entity/book_entity.dart';
 import 'VolumeInfo.dart';
 import 'SaleInfo.dart';
 import 'AccessInfo.dart';
@@ -45,6 +45,8 @@ class BookModel extends BookEntity {
           rating: volumeInfo.averageRating,
           bookId: id ?? '',
           ratingCount: volumeInfo.ratingsCount,
+          previewLink: volumeInfo.previewLink ?? '',
+          categories: volumeInfo.categories ?? [],
         );
 
   factory BookModel.fromJson(dynamic json) => BookModel(

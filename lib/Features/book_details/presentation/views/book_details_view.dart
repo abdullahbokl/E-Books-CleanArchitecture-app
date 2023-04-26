@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/dimensions.dart';
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../widgets/book_actions.dart';
 import '../widgets/book_details_custom_app_bar.dart';
 import '../widgets/book_details_section.dart';
 import '../widgets/similar_books_list_view.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({Key? key}) : super(key: key);
+  const BookDetailsView({Key? key, required this.book}) : super(key: key);
+
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +23,11 @@ class BookDetailsView extends StatelessWidget {
             children: [
               const BookDetailsCustomAppBar(),
               SizedBox(height: AppDimensions.heightCalculator(10)),
-              const BookDetailsSection(),
+              BookDetailsSection(book: book),
               SizedBox(height: AppDimensions.heightCalculator(35)),
-              const BookActions(),
+              BookActions(book: book),
               const Spacer(),
-              const SimilarBooksListView(),
+              SimilarBooksListView(book: book),
               SizedBox(height: AppDimensions.heightCalculator(20)),
             ],
           ),

@@ -1,5 +1,3 @@
-import 'package:boklo_ebook/Features/home/domain/entities/book_entity.dart';
-import 'package:boklo_ebook/Features/home/presentation/manger/newest_books_cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +6,8 @@ import '../../../../core/shared/widgets/custom_circular_indicator.dart';
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/shared/widgets/book_details_card.dart';
 import '../../../../core/utils/router.dart';
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import '../manger/newest_books_cubit/newest_books_cubit.dart';
 
 class NewestBooksListView extends StatelessWidget {
   const NewestBooksListView({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../domain/entities/book_entity.dart';
+import '../../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../../../domain/use_cases/fetch_newest_books_use_case.dart';
 
 part 'newest_books_state.dart';

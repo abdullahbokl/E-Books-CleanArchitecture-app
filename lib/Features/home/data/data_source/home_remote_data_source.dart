@@ -1,9 +1,14 @@
-import '../../../../core/shared/models/book_model/BookModel.dart';
+import '../../../../core/functions/convert_data_into_books_list.dart';
 import '../../../../core/utils/api_services.dart';
-import '../../../../core/shared/functions/save_books_locally.dart';
+import '../../../../core/functions/save_books_locally.dart';
 import '../../../../core/utils/strings.dart';
-import '../../domain/entities/book_entity.dart';
-import 'data_sources.dart';
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
+
+abstract class HomeRemoteDataSource {
+  Future<List<BookEntity>> fetchAllBooks();
+
+  Future<List<BookEntity>> fetchBestSellingBooks();
+}
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   ApiServices apiServices;
@@ -15,7 +20,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     var data =
         await apiServices.get('volumes?Filtering=free-ebooks&q=programming');
 
-    List<BookEntity> books = _getBooksList(data);
+    List<BookEntity> books = convertDataIntoBooksList(data);
 
     saveBooksLocally(booksList: books, boxName: AppStrings.allBooksBox);
 
@@ -27,19 +32,10 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     var data = await apiServices
         .get('volumes?Filtering=best-seller&Sorting=newest&q=programming');
 
-    List<BookEntity> books = _getBooksList(data);
+    List<BookEntity> books = convertDataIntoBooksList(data);
 
     saveBooksLocally(booksList: books, boxName: AppStrings.bestSellerBox);
 
-    return books;
-  }
-
-  List<BookEntity> _getBooksList(data) {
-    List<BookEntity> books = [];
-
-    for (var book in data['items']) {
-      books.add(BookModel.fromJson(book));
-    }
     return books;
   }
 }
