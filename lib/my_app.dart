@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: depend_on_referenced_packages
+import 'package:nested/nested.dart';
 
 import 'Features/home/domain/use_cases/fetch_all_books_use_case.dart';
 import 'Features/home/domain/use_cases/fetch_newest_books_use_case.dart';
@@ -10,7 +12,6 @@ import 'core/utils/colors.dart';
 import 'core/utils/dimensions.dart';
 import 'core/utils/router.dart';
 import 'core/utils/services_locator.dart';
-import 'package:nested/nested.dart';
 
 class BokloEBook extends StatelessWidget {
   const BokloEBook({Key? key}) : super(key: key);
@@ -61,4 +62,3 @@ class BokloEBook extends StatelessWidget {
     AppDimensions.screenHeight = MediaQuery.of(context).size.height;
   }
 }
-

@@ -1,41 +1,55 @@
-import '../../../../core/functions/convert_data_into_books_list.dart';
-import '../../../../core/services/api_services.dart';
-import '../../../../core/functions/save_books_locally.dart';
-import '../../../../core/utils/strings.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../../../core/errors/base_app_exception.dart';
+import '../../../../core/services/api/api_services.dart';
+import '../../../../core/services/api/endpoints.dart';
+import '../../domain/use_cases/fetch_all_books_use_case.dart';
+import '../../domain/use_cases/fetch_newest_books_use_case.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchAllBooks();
+  Future<dynamic> fetchAllBooks(
+    FetchAllBooksParams params,
+  );
 
-  Future<List<BookEntity>> fetchNewestBooks();
+  Future<dynamic> fetchNewestBooks(
+    FetchNewestBooksParams params,
+  );
 }
 
+@LazySingleton(as: HomeRemoteDataSource)
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
-  ApiServices apiServices;
+  final ApiServices _apiServices;
 
-  HomeRemoteDataSourceImpl(this.apiServices);
+  const HomeRemoteDataSourceImpl(this._apiServices);
 
   @override
-  Future<List<BookEntity>> fetchAllBooks() async {
-    var data =
-        await apiServices.get('volumes?Filtering=free-ebooks&q=programming');
-
-    List<BookEntity> books = convertDataIntoBooksList(data);
-
-    await saveBooksLocally(booksList: books, boxName: AppStrings.allBooksBox, key: AppStrings.allBooksKey);
-
-    return books;
+  Future<dynamic> fetchAllBooks(
+    FetchAllBooksParams params,
+  ) async {
+    try {
+      return await _apiServices.get(
+        endPoint: EndPoints.books.fetchAllBooks,
+        queryParameters: params.toMap(),
+      );
+    } on BaseAppException catch (e) {
+      debugPrint("error in fetchAllBooks: $e");
+      return e.message;
+    }
   }
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async {
-    var data = await apiServices
-        .get('volumes?Filtering=best-seller&Sorting=newest&q=programming');
-
-    List<BookEntity> books = convertDataIntoBooksList(data);
-
-    await saveBooksLocally(booksList: books, boxName: AppStrings.newestBooksBox, key: AppStrings.newestBooksKey);
-
-    return books;
+  Future<dynamic> fetchNewestBooks(
+    FetchNewestBooksParams params,
+  ) async {
+    try {
+      return await _apiServices.get(
+        endPoint: EndPoints.books.fetchNewestBooks,
+        queryParameters: params.toMap(),
+      );
+    } on BaseAppException catch (e) {
+      debugPrint("error in fetchNewestBooks: $e");
+      return e.message;
+    }
   }
 }

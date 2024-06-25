@@ -22,8 +22,10 @@ class SimilarBooksListView extends StatefulWidget {
 class _SimilarBooksListViewState extends State<SimilarBooksListView> {
   @override
   void initState() {
-    BlocProvider.of<SimilarBooksCubit>(context)
-        .fetchSimilarBooks(category: widget.book.categories?.first ?? 'programming');
+    BlocProvider.of<SimilarBooksCubit>(context).fetchSimilarBooks(
+        category: widget.book.categories?.isNotEmpty == true
+            ? widget.book.categories?.first ?? 'programming'
+            : 'programming');
 
     super.initState();
   }

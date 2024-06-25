@@ -1,20 +1,35 @@
-import '../../../../core/functions/convert_data_into_books_list.dart';
-import '../../../../core/services/api_services.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../../../core/errors/base_app_exception.dart';
+import '../../../../core/services/api/api_services.dart';
+import '../../../../core/services/api/endpoints.dart';
+import '../../domain/use_cases/fetch_books_by_query_use_case.dart';
 
 abstract class SearchRemoteDataSource {
-  Future<List<BookEntity>> fetchBooksByQuery(String query);
+  Future<dynamic> fetchBooksByQuery(
+    FetchBooksByQueryParams params,
+  );
 }
 
+@LazySingleton(as: SearchRemoteDataSource)
 class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
-  SearchRemoteDataSourceImpl(this.apiServices);
+  const SearchRemoteDataSourceImpl(this._apiServices);
 
-  final ApiServices apiServices;
+  final ApiServices _apiServices;
 
   @override
-  Future<List<BookEntity>> fetchBooksByQuery(String query) async {
-    var data = await apiServices.get('volumes?q=$query');
-    List<BookEntity> books = convertDataIntoBooksList(data);
-    return books;
+  Future<dynamic> fetchBooksByQuery(
+    FetchBooksByQueryParams params,
+  ) async {
+    try {
+      return await _apiServices.get(
+        endPoint: EndPoints.books.fetchAllBooks,
+        queryParameters: params.toMap(),
+      );
+    } on BaseAppException catch (e) {
+      debugPrint("error in fetchBooksByQuery: $e");
+      return e.message;
+    }
   }
 }

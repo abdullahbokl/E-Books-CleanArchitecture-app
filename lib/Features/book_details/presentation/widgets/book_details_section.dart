@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../../../../core/shared/widgets/custom_book_image.dart';
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/utils/styles.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../../../home/presentation/widgets/book_rate.dart';
 
 class BookDetailsSection extends StatelessWidget {

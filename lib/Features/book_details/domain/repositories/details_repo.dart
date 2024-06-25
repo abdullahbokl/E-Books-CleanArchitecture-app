@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failure.dart';
 import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import '../use_cases/fetch_similar_books_use_case.dart';
 
 abstract class DetailsRepo {
-  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks({
-    required String category,
-  });
+  Future<Either<String, List<BookEntity>>> fetchSimilarBooks(
+    FetchSimilarBooksParams params,
+  );
 }

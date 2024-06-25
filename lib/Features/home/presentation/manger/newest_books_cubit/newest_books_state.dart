@@ -18,4 +18,3 @@ class FetchNewestBooksFailure extends FetchNewestBooksState {
 
   FetchNewestBooksFailure(this.errMessage);
 }
-

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/functions/launch_url.dart';
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../../../../core/shared/widgets/custom_button.dart';
 import '../../../../core/utils/colors.dart';
 import '../../../../core/utils/dimensions.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
 
 class BookActions extends StatelessWidget {
   const BookActions({Key? key, required this.book}) : super(key: key);

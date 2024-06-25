@@ -1,21 +1,33 @@
-import '../../../../core/functions/convert_data_into_books_list.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
-import '../../../../core/services/api_services.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../../../core/errors/base_app_exception.dart';
+import '../../../../core/services/api/api_services.dart';
+import '../../../../core/services/api/endpoints.dart';
+import '../../domain/use_cases/fetch_similar_books_use_case.dart';
 
 abstract class DetailsRemoteDataSources {
-  Future<List<BookEntity>> fetchSimilarBooks(String category);
+  Future<dynamic> fetchSimilarBooks(FetchSimilarBooksParams params);
 }
 
+@LazySingleton(as: DetailsRemoteDataSources)
 class DetailsRemoteDataSourcesImpl implements DetailsRemoteDataSources {
-  DetailsRemoteDataSourcesImpl(this.apiServices);
+  final ApiServices _apiServices;
 
-    final ApiServices apiServices;
+  const DetailsRemoteDataSourcesImpl(this._apiServices);
 
-    @override
-    Future<List<BookEntity>> fetchSimilarBooks(String category) async {
-      var data = await apiServices
-          .get('volumes?Filtering=ebooks&Sorting=relevance&q=subject:$category');
-      List<BookEntity> books = convertDataIntoBooksList(data);
-      return books;
+  @override
+  Future<dynamic> fetchSimilarBooks(FetchSimilarBooksParams params) async {
+    {
+      try {
+        return await _apiServices.get(
+          endPoint: EndPoints.books.fetchSimilarBooks,
+          queryParameters: params.toMap(),
+        );
+      } on BaseAppException catch (e) {
+        debugPrint("error in fetchSimilarBooks: $e");
+        return e.message;
+      }
     }
   }
+}

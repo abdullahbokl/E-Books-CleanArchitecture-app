@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import '../../../../core/shared/widgets/custom_book_image.dart';
 import '../../../../core/shared/widgets/custom_circular_indicator.dart';
 import '../../../../core/utils/dimensions.dart';
-import '../../../../core/shared/widgets/custom_book_image.dart';
 import '../../../../core/utils/router.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../manger/all_books_cubit/all_books_cubit.dart';
 
 class HomeBooksListView extends StatelessWidget {

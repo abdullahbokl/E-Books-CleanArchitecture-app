@@ -15,10 +15,11 @@ class AllBooksCubit extends Cubit<FetchAllBooksState> {
 
   Future<void> fetchAllBooks() async {
     emit(FetchAllBooksLoading());
-    var result = await _fetchAllBooksUseCase.call();
+    var result = await _fetchAllBooksUseCase
+        .call(const FetchAllBooksParams(query: 'all'));
     result.fold(
       (failure) {
-        emit(FetchAllBooksFailure(failure.message));
+        emit(FetchAllBooksFailure(failure));
       },
       (books) {
         emit(FetchAllBooksSuccess(books));

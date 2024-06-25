@@ -4,7 +4,8 @@ import '../shared/models/book_model/book_model.dart';
 List<BookEntity> convertDataIntoBooksList(data) {
   List<BookEntity> books = [];
 
-  for (var book in data['items']) {
+  final booksData = data['items'] ?? [];
+  for (var book in booksData) {
     books.add(BookModel.fromJson(book));
   }
   return books;
