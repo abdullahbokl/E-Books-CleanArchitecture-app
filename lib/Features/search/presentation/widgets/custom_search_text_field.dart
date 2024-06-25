@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/utils/dimensions.dart';
@@ -9,10 +10,15 @@ class CustomSearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SearchCubit searchCubit = SearchCubit.get(context);
+    SearchCubit searchCubit = context.read<SearchCubit>();
     return TextField(
       controller: searchCubit.searchFieldController,
-      onSubmitted: (value) => searchCubit.fetchBooksBySearchQuery(),
+      onChanged: (value) {
+        // todo: debounce search
+      },
+      onSubmitted: (value) {
+        searchCubit.fetchBooksBySearchQuery();
+      },
       decoration: InputDecoration(
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),

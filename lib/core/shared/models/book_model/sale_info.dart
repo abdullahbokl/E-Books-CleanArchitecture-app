@@ -1,17 +1,5 @@
 import 'list_price.dart';
 import 'retail_price.dart';
-import 'dart:convert';
-
-/// country : "US"
-/// saleability : "FOR_SALE"
-/// isEbook : true
-/// listPrice : {"amount":11.99,"currencyCode":"USD"}
-/// retailPrice : {"amount":11.99,"currencyCode":"USD"}
-/// buyLink : "https://books.google.com/books?id=zyTCAlFPjgYC&ie=ISO-8859-1&buy=&source=gbs_api"
-
-SaleInfo saleInfoFromJson(String str) => SaleInfo.fromJson(json.decode(str));
-
-String saleInfoToJson(SaleInfo data) => json.encode(data.toJson());
 
 class SaleInfo {
   String? _country;
@@ -61,23 +49,6 @@ class SaleInfo {
         : null;
     _buyLink = json['buyLink'];
   }
-
-  SaleInfo copyWith({
-    String? country,
-    String? saleability,
-    bool? isEbook,
-    ListPrice? listPrice,
-    RetailPrice? retailPrice,
-    String? buyLink,
-  }) =>
-      SaleInfo(
-        country: country ?? _country,
-        saleability: saleability ?? _saleability,
-        isEbook: isEbook ?? _isEbook,
-        listPrice: listPrice ?? _listPrice,
-        retailPrice: retailPrice ?? _retailPrice,
-        buyLink: buyLink ?? _buyLink,
-      );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

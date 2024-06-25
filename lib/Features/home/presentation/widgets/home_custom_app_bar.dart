@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/router.dart';
 import '/core/utils/dimensions.dart';
 import '/core/utils/images.dart';
+import '../../../../core/utils/router.dart';
 
 class HomeCustomAppBar extends StatelessWidget {
   const HomeCustomAppBar({

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/dimensions.dart';
 import '../../../../core/utils/styles.dart';
-import '../widgets/newest_books_list_view.dart';
 import '../widgets/home_books_list_view.dart';
 import '../widgets/home_custom_app_bar.dart';
+import '../widgets/newest_books_list_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,6 @@ class HomeView extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: AppDimensions.widthCalculator(20)),
           child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
             slivers: [
               SliverToBoxAdapter(
                 child: Column(

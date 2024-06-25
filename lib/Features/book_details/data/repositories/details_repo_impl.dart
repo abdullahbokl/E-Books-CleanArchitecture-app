@@ -1,29 +1,31 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
-import '../../../../core/errors/failure.dart';
+import '../../../../core/functions/convert_data_into_books_list.dart';
 import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../../domain/repositories/details_repo.dart';
+import '../../domain/use_cases/fetch_similar_books_use_case.dart';
 import '../data_sources/details_remote_data_sources.dart';
 
+@LazySingleton(as: DetailsRepo)
 class DetailsRepoImpl implements DetailsRepo {
-  DetailsRepoImpl(this.remoteDataSource);
+  final DetailsRemoteDataSources _remoteDataSource;
 
-  final DetailsRemoteDataSources remoteDataSource;
+  const DetailsRepoImpl(this._remoteDataSource);
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks({
-    required String category,
-  }) async {
+  Future<Either<String, List<BookEntity>>> fetchSimilarBooks(
+    FetchSimilarBooksParams params,
+  ) async {
     try {
-      List<BookEntity> result =
-          await remoteDataSource.fetchSimilarBooks(category);
-      return Right(result);
-    } catch (error) {
-      if (error is DioError) {
-        return left(ServerFailure.fromDiorError(error));
-      }
-      return left(ServerFailure(error.toString()));
+      final data = await _remoteDataSource.fetchSimilarBooks(params);
+      List<BookEntity> books = convertDataIntoBooksList(data);
+      return Right(books);
+    } catch (e, s) {
+      debugPrintStack(stackTrace: s);
+      debugPrint("error in fetchSimilarBooks: $e");
+      return Left(e.toString());
     }
   }
 }

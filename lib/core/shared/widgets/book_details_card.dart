@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../entities/book_entity/book_entity.dart';
+import '../../../Features/home/presentation/widgets/book_rate.dart';
 import '../../utils/dimensions.dart';
 import '../../utils/styles.dart';
-import '../../../Features/home/presentation/widgets/book_rate.dart';
+import '../entities/book_entity/book_entity.dart';
 import 'custom_book_image.dart';
 
 class BookDetailsCard extends StatelessWidget {

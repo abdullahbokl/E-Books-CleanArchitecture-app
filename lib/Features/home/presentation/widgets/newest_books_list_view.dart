@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import '../../../../core/shared/widgets/book_details_card.dart';
 import '../../../../core/shared/widgets/custom_circular_indicator.dart';
 import '../../../../core/utils/dimensions.dart';
-import '../../../../core/shared/widgets/book_details_card.dart';
 import '../../../../core/utils/router.dart';
-import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../manger/newest_books_cubit/newest_books_cubit.dart';
 
 class NewestBooksListView extends StatelessWidget {

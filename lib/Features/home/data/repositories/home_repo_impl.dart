@@ -1,51 +1,51 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
-import '../../../../core/errors/failure.dart';
+import '../../../../core/functions/convert_data_into_books_list.dart';
 import '../../../../core/shared/entities/book_entity/book_entity.dart';
 import '../../domain/repositories/home_repo.dart';
-import '../data_source/home_local_data_source.dart';
+import '../../domain/use_cases/fetch_all_books_use_case.dart';
+import '../../domain/use_cases/fetch_newest_books_use_case.dart';
 import '../data_source/home_remote_data_source.dart';
 
+@LazySingleton(as: HomeRepo)
 class HomeRepoImpl implements HomeRepo {
-  final HomeRemoteDataSource homeRemoteDataSource;
-  final HomeLocalDataSource homeLocalDataSource;
+  final HomeRemoteDataSource _homeRemoteDataSource;
 
-  HomeRepoImpl(this.homeRemoteDataSource, this.homeLocalDataSource);
+  const HomeRepoImpl(
+    this._homeRemoteDataSource,
+  );
 
   @override
-  Future<Either<ServerFailure, List<BookEntity>>> fetchAllBooks() async {
+  Future<Either<String, List<BookEntity>>> fetchAllBooks(
+    FetchAllBooksParams params,
+  ) async {
     try {
-      List<BookEntity> books = [];
-      books = homeLocalDataSource.fetchAllBooks();
-      if (books.isNotEmpty) {
-        return Right(books);
-      }
-      books = await homeRemoteDataSource.fetchAllBooks();
+      final data = await _homeRemoteDataSource.fetchAllBooks(params);
+
+      List<BookEntity> books = convertDataIntoBooksList(data);
+
       return Right(books);
-    } catch (error) {
-      if (error is DioError) {
-        return left(ServerFailure.fromDiorError(error));
-      }
-      return left(ServerFailure(error.toString()));
+    } catch (e, s) {
+      debugPrintStack(stackTrace: s);
+      debugPrint("error in fetchAllBooks: $e");
+      return Left(e.toString());
     }
   }
 
   @override
-  Future<Either<ServerFailure, List<BookEntity>>> fetchNewestBooks() async {
+  Future<Either<String, List<BookEntity>>> fetchNewestBooks(
+    FetchNewestBooksParams params,
+  ) async {
     try {
-      List<BookEntity>? books;
-      books = homeLocalDataSource.fetchBestSellingBooks();
-      if (books != null && books.isNotEmpty) {
-        return Right(books);
-      }
-      books = await homeRemoteDataSource.fetchNewestBooks();
+      final data = await _homeRemoteDataSource.fetchNewestBooks(params);
+      List<BookEntity> books = convertDataIntoBooksList(data);
       return Right(books);
-    } catch (e) {
-      if (e is DioError) {
-        return left(ServerFailure.fromDiorError(e));
-      }
-      return left(ServerFailure(e.toString()));
+    } catch (e, s) {
+      debugPrintStack(stackTrace: s);
+      debugPrint("error in fetchNewestBooks: $e");
+      return Left(e.toString());
     }
   }
 }

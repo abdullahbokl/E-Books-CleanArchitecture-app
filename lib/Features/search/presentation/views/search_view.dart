@@ -9,8 +9,19 @@ import '../manager/search_cubit/search_cubit.dart';
 import '../widgets/custom_search_text_field.dart';
 import '../widgets/search_result_list_view.dart';
 
-class SearchView extends StatelessWidget {
+class SearchView extends StatefulWidget {
   const SearchView({super.key});
+
+  @override
+  State<SearchView> createState() => _SearchViewState();
+}
+
+class _SearchViewState extends State<SearchView> {
+  @override
+  void initState() {
+    context.read<SearchCubit>().fetchBooksBySearchQuery();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +49,17 @@ class SearchView extends StatelessWidget {
               SliverFillRemaining(
                 child: BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {
-                    if (state is SearchFailure) {
+                    if (state is SearchLoading) {
+                      return const CustomCircularIndicator();
+                    } else if (state is SearchFailure) {
                       return CustomErrorWidget(errorMessage: state.errMessage);
-                    } else if (state is SearchSuccess) {
+                    } else if (state is SearchSuccess &&
+                        state.books.isNotEmpty) {
                       return SearchResultListView(books: state.books);
                     } else {
-                      return const CustomCircularIndicator();
+                      return const CustomErrorWidget(
+                        errorMessage: 'No result found',
+                      );
                     }
                   },
                 ),

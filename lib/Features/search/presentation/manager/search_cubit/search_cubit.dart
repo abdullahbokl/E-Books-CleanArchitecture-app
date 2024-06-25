@@ -7,8 +7,6 @@ import '../../../domain/use_cases/fetch_books_by_query_use_case.dart';
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
-  static SearchCubit get(context) => BlocProvider.of(context);
-
   SearchCubit(this._fetchBooksByQueryUseCase) : super(SearchInitial());
 
   final FetchBooksByQueryUseCase _fetchBooksByQueryUseCase;
@@ -17,10 +15,10 @@ class SearchCubit extends Cubit<SearchState> {
 
   fetchBooksBySearchQuery() async {
     emit(SearchLoading());
-    var result =
-        await _fetchBooksByQueryUseCase.call(searchFieldController.text);
+    var result = await _fetchBooksByQueryUseCase
+        .call(FetchBooksByQueryParams(query: searchFieldController.text));
     result.fold((failure) {
-      emit(SearchFailure(failure.message));
+      emit(SearchFailure(failure));
     }, (books) {
       emit(SearchSuccess(books));
     });

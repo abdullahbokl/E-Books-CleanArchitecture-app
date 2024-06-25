@@ -1,9 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../errors/failure.dart';
-
 abstract class UseCaseMethods<Type, Param> {
-  Future<Either<Failure, Type>> call([Param? params]);
+  Future<Either<String, Type>> call(Param params);
 }
-
-class NoParams {}

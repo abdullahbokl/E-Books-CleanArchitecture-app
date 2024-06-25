@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/dimensions.dart';
 import '../../../../core/shared/entities/book_entity/book_entity.dart';
+import '../../../../core/utils/dimensions.dart';
 import '../widgets/book_actions.dart';
 import '../widgets/book_details_custom_app_bar.dart';
 import '../widgets/book_details_section.dart';

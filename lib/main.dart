@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
 
-import 'core/shared/entities/book_entity/book_entity.dart';
 import 'core/utils/services_locator.dart';
-import 'core/utils/strings.dart';
 import 'my_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(AppStrings.allBooksBox);
-  await Hive.openBox(AppStrings.newestBooksBox);
-  setupServiceLocator();
+  await _initApp();
   runApp(const BokloEBook());
+}
+
+Future<void> _initApp() async {
+  configureDependencies();
+  await getIt.allReady();
 }

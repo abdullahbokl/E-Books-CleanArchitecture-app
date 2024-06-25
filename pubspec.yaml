@@ -47,10 +47,13 @@ dependencies:
   equatable: ^2.0.5
   url_launcher: ^6.1.10
   awesome_dialog: ^3.0.2
+  awesome_dio_interceptor: ^1.0.0
+  injectable: ^2.3.5
 
 dev_dependencies:
   hive_generator:
   build_runner:
+  injectable_generator:
 
   flutter_test:
     sdk: flutter
