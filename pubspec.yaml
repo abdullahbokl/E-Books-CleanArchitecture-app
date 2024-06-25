@@ -49,6 +49,7 @@ dependencies:
   awesome_dialog: ^3.0.2
   awesome_dio_interceptor: ^1.0.0
   injectable: ^2.3.5
+  easy_debounce: ^2.0.3
 
 dev_dependencies:
   hive_generator:

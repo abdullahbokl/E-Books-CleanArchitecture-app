@@ -8,9 +8,9 @@ class SearchInitial extends SearchState {}
 class SearchLoading extends SearchState {}
 
 class SearchSuccess extends SearchState {
-  final List<BookEntity> books;
+  final bool hasReachedMax;
 
-  SearchSuccess(this.books);
+  SearchSuccess(this.hasReachedMax);
 }
 
 class SearchFailure extends SearchState {

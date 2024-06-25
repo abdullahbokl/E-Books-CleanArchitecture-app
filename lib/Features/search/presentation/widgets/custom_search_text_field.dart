@@ -14,10 +14,13 @@ class CustomSearchTextField extends StatelessWidget {
     return TextField(
       controller: searchCubit.searchFieldController,
       onChanged: (value) {
-        // todo: debounce search
+        searchCubit.fetchBooksBySearchQuery(
+          isNewSearch: true,
+          isDebounce: true,
+        );
       },
       onSubmitted: (value) {
-        searchCubit.fetchBooksBySearchQuery();
+        searchCubit.fetchBooksBySearchQuery(isNewSearch: true);
       },
       decoration: InputDecoration(
         enabledBorder: buildOutlineInputBorder(),
